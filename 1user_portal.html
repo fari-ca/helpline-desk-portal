@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অনলাইন সাপোর্ট প্যানেল - কেস স্ট্যাটাস ট্র্যাকিং</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Hind Siliguri) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #0b1329; color: #f8fafc; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="bg-slate-900/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-tr from-emerald-600 to-teal-400 p-3 rounded-2xl shadow-lg text-white">
+                    <i class="fa-solid fa-shield-halved text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-200">
+                        ডিজিটাল সাপোর্ট পোর্টাল
+                    </h1>
+                    <p class="text-xs text-slate-400">নিরাপদ তথ্য উদ্ধার ও লাইভ স্ট্যাটাস ট্র্যাকিং</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 bg-emerald-950/60 border border-emerald-500/30 px-3 py-1.5 rounded-full text-xs font-semibold text-emerald-400">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                লাইভ সিঙ্ক চালু
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section & Secure Login Form -->
+        <section class="py-10 px-4 max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 text-xs sm:text-sm px-4 py-1.5 rounded-full font-semibold border border-emerald-500/20 mb-4">
+                <i class="fa-solid fa-lock text-emerald-500"></i> এনক্রিপ্টেড ভেরিফিকেশন প্যানেল
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-black text-white mb-3">
+                আপনার ফাইলের <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">বর্তমান অবস্থান</span> চেক করুন
+            </h2>
+            <p class="text-slate-400 text-xs sm:text-sm mb-6">
+                গোপনীয়তা রক্ষার জন্য নাম এবং মোবাইল/একাউন্ট নম্বর দুটিই সঠিকভাবে দিয়ে ডাটা ফিল্টার করুন।
+            </p>
+
+            <!-- Secure Login Form Card -->
+            <div class="glass-card p-6 rounded-3xl shadow-2xl max-w-xl mx-auto border border-emerald-500/20 text-left">
+                <form onsubmit="handleUserLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1.5">১. আবেদনকারীর নাম *</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            <input type="text" id="loginName" required placeholder="আপনার সঠিক নাম দিন..." 
+                                class="w-full pl-11 pr-4 py-3 bg-slate-900/90 text-white rounded-xl border border-slate-700 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1.5">২. একাউন্ট / মোবাইল নম্বর *</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            <input type="text" id="loginPhone" required placeholder="আবেদনকৃত মোবাইল বা একাউন্ট নম্বর..." 
+                                class="w-full pl-11 pr-4 py-3 bg-slate-900/90 text-white rounded-xl border border-slate-700 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold py-3.5 rounded-xl transition shadow-lg flex items-center justify-center gap-2 text-sm mt-2">
+                        <i class="fa-solid fa-right-to-bracket"></i> সার্চ ও তথ্য দেখুন
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Result Section -->
+        <section id="resultSection" class="max-w-4xl mx-auto px-4 py-4 hidden">
+            <!-- Dynamic Result Card -->
+        </section>
+
+        <!-- Customer Reviews Section -->
+        <section class="max-w-7xl mx-auto px-4 py-12 border-t border-slate-800/80 mt-8">
+            <div class="text-center mb-10">
+                <h3 class="text-xl sm:text-3xl font-extrabold text-white mb-2">গ্রাহকদের বাস্তব অভিজ্ঞতা ও রিভিউ</h3>
+                <p class="text-slate-400 text-xs sm:text-sm">দেশ ও প্রবাসের সফল ক্লায়েন্টদের মতামত</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Review 1 -->
+                <div class="glass-card p-5 rounded-2xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-600/30 text-emerald-400 flex items-center justify-center font-bold border border-emerald-500/40 text-xs">SA</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">শাহেদ আহমেদ</h4>
+                                <span class="text-[10px] text-slate-400">সৌদি প্রবাসী</span>
+                            </div>
+                        </div>
+                        <span class="text-amber-400 text-xs"><i class="fa-solid fa-star"></i> 5.0</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3">"আমার ১,২০,০০০ টাকা প্রসেসিং ছিল। এডমিন টিম ৩ দিনের মধ্যে সরাসরি ব্যাংক ট্রান্সফার করে দিয়েছে।"</p>
+                    <span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-full border border-emerald-800">৳১,২০,০০০ সম্পূর্ণ উদ্ধার</span>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-card p-5 rounded-2xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-600/30 text-blue-400 flex items-center justify-center font-bold border border-blue-500/40 text-xs">MR</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Mizanur Rahman</h4>
+                                <span class="text-[10px] text-slate-400">Dhaka, Bangladesh</span>
+                            </div>
+                        </div>
+                        <span class="text-amber-400 text-xs"><i class="fa-solid fa-star"></i> 5.0</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3">"Highly recommended portal. I got my 85,000 BDT transferred seamlessly!"</p>
+                    <span class="text-[10px] text-blue-400 bg-blue-950/80 px-2.5 py-1 rounded-full border border-blue-800">৳৮৫,০০০ Recovered</span>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-card p-5 rounded-2xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-600/30 text-purple-400 flex items-center justify-center font-bold border border-purple-500/40 text-xs">RH</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">রফিকুল ইসলাম</h4>
+                                <span class="text-[10px] text-slate-400">মালয়েশিয়া প্রবাসী</span>
+                            </div>
+                        </div>
+                        <span class="text-amber-400 text-xs"><i class="fa-solid fa-star"></i> 5.0</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3">"নাম ও মোবাইল দিয়ে ভেরিফাই করে নিজের ফাইল পেয়েছি। চার্জ ফি দেয়ার সাথেই টাকা ব্যাংক ডাচ বাংলায় গেছে।"</p>
+                    <span class="text-[10px] text-purple-400 bg-purple-950/80 px-2.5 py-1 rounded-full border border-purple-800">৳৫০,০০০ সফল</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 অনলাইন হেল্পডেস্ক সাপোর্ট প্যানেল। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <!-- Firebase Realtime Database SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8rU4crfabgQ3I3552QFb_28Ks44sCQ34",
+            authDomain: "game-win-amount.firebaseapp.com",
+            databaseURL: "https://game-win-amount-default-rtdb.firebaseio.com",
+            projectId: "game-win-amount",
+            storageBucket: "game-win-amount.firebasestorage.app",
+            messagingSenderId: "22052414695",
+            appId: "1:22052414695:web:d1513b2b9617dc163cee42",
+            measurementId: "G-0WTGS751KV"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        let allCases = [];
+
+        // Realtime Data Sync
+        onValue(ref(db, 'cases'), (snapshot) => {
+            const data = snapshot.val();
+            allCases = [];
+            if (data) {
+                Object.keys(data).forEach(key => {
+                    allCases.push({ id: key, ...data[key] });
+                });
+            }
+        });
+
+        // Login Handler
+        window.handleUserLogin = function(event) {
+            event.preventDefault();
+            const name = document.getElementById('loginName').value.trim().toLowerCase();
+            const phone = document.getElementById('loginPhone').value.trim().toLowerCase();
+            const resultSection = document.getElementById('resultSection');
+
+            const matched = allCases.find(c => 
+                (c.applicantName && c.applicantName.toLowerCase().trim() === name) &&
+                (c.accountNumber && c.accountNumber.toLowerCase().trim() === phone)
+            );
+
+            resultSection.classList.remove('hidden');
+
+            if (!matched) {
+                resultSection.innerHTML = `
+                    <div class="glass-card p-6 rounded-2xl text-center border border-rose-500/40">
+                        <i class="fa-solid fa-circle-xmark text-4xl text-rose-500 mb-2"></i>
+                        <h4 class="text-base font-bold text-white">কোনো ফাইল পাওয়া যায়নি!</h4>
+                        <p class="text-xs text-slate-400 mt-1">আপনার দেওয়া নাম এবং মোবাইল নম্বর মেলেনি। সঠিক তথ্য লিখুন।</p>
+                    </div>`;
+                return;
+            }
+
+            let badgeStyle = "bg-amber-500/20 text-amber-400 border-amber-500/50";
+            let statusIcon = "fa-hourglass-half";
+
+            if (matched.status === "উদ্ধার সম্পন্ন") {
+                badgeStyle = "bg-emerald-500/20 text-emerald-400 border-emerald-500/50";
+                statusIcon = "fa-circle-check";
+            } else if (matched.status === "টাকা ব্যাংক স্টপ করা") {
+                badgeStyle = "bg-rose-500/20 text-rose-400 border-rose-500/50";
+                statusIcon = "fa-bank";
+            } else if (matched.status === "চার্জ ফি পেন্ডিং") {
+                badgeStyle = "bg-amber-500/20 text-amber-300 border-amber-500/50";
+                statusIcon = "fa-triangle-exclamation";
+            }
+
+            // Image/Doc Preview Block
+            let docBlock = '';
+            if (matched.docUrl) {
+                docBlock = `
+                    <div class="mb-6 bg-slate-900/90 p-4 rounded-2xl border border-teal-500/30">
+                        <h4 class="text-xs font-bold text-teal-400 uppercase mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-file-arrow-down"></i> সংযুক্ত অফিশিয়াল ডকুমেন্ট / প্রমাণপত্র
+                        </h4>
+                        <div class="mt-2 flex flex-col sm:flex-row gap-4 items-center">
+                            <a href="${matched.docUrl}" target="_blank" class="w-full sm:w-auto flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 rounded-xl flex items-center justify-between text-xs text-white">
+                                <span class="flex items-center gap-2 truncate">
+                                    <i class="fa-solid fa-paperclip text-teal-400"></i> ডকুমেন্ট খুলুন বা ডাউনলোড করুন
+                                </span>
+                                <i class="fa-solid fa-up-right-from-square text-teal-400"></i>
+                            </a>
+                        </div>
+                        <div class="mt-3 overflow-hidden rounded-xl max-h-60 border border-slate-800">
+                            <img src="${matched.docUrl}" alt="সংযুক্ত ডকুমেন্ট" onerror="this.style.display='none'" class="w-full object-cover">
+                        </div>
+                    </div>
+                `;
+            }
+
+            resultSection.innerHTML = `
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/40 shadow-2xl relative overflow-hidden">
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-6 pb-4 border-b border-slate-700/60">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">আপডেট পরিস্থিতি</span>
+                            <div class="mt-1">
+                                <span class="inline-flex items-center gap-2 border px-4 py-1.5 rounded-full text-xs font-extrabold ${badgeStyle}">
+                                    <i class="fa-solid ${statusIcon}"></i> ${matched.status || 'প্রসেসিং চলছে'}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-slate-400 block">এপ্লিকেশন আইডি</span>
+                            <span class="text-sm font-mono font-bold text-emerald-400">${matched.appId || 'N/A'}</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white text-2xl font-black shadow-lg">
+                            ${(matched.applicantName || 'U').charAt(0)}
+                        </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-black text-white">${matched.applicantName}</h3>
+                            <p class="text-xs text-slate-400 flex items-center gap-2 mt-0.5">
+                                <span><i class="fa-solid fa-earth-americas text-emerald-400"></i> অবস্থান: <strong class="text-slate-200">${matched.country || 'বাংলাদেশ'}</strong></span> | 
+                                <span><i class="fa-solid fa-hashtag text-emerald-400"></i> রেফারেন্স: <strong class="text-slate-200">${matched.refNumber || 'N/A'}</strong></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-6">
+                        <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block">গেম / প্ল্যাটফর্ম</span>
+                            <span class="text-xs font-bold text-slate-200"><i class="fa-solid fa-gamepad text-purple-400 mr-1"></i> ${matched.gameName || 'N/A'}</span>
+                        </div>
+                        <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block">ব্যাংকের নাম</span>
+                            <span class="text-xs font-bold text-amber-300"><i class="fa-solid fa-building-columns text-amber-400 mr-1"></i> ${matched.bankName || 'উদ্ধার ব্যাংক'}</span>
+                        </div>
+                        <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block">উদ্ধারকৃত উইন পরিমাণ</span>
+                            <span class="text-sm font-black text-emerald-400">৳ ${Number(matched.winAmount || 0).toLocaleString('bn-BD')}</span>
+                        </div>
+                        <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block">প্রসেসিং সার্ভিস চার্জ</span>
+                            <span class="text-xs font-bold text-amber-400">৳ ${Number(matched.chargeFee || 0).toLocaleString('bn-BD')}</span>
+                        </div>
+                        <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block">চার্জ ফি প্রদানের শেষ তারিখ</span>
+                            <span class="text-xs font-bold text-rose-400"><i class="fa-solid fa-calendar-xmark mr-1"></i> ${matched.lastDate || 'N/A'}</span>
+                        </div>
+                        <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block">সম্ভাব্য তোলার তারিখ</span>
+                            <span class="text-xs font-bold text-teal-300"><i class="fa-solid fa-calendar-check mr-1"></i> ${matched.expectedDate || 'N/A'}</span>
+                        </div>
+                    </div>
+
+                    ${docBlock}
+
+                    <div class="bg-gradient-to-r from-emerald-950/80 to-slate-900 border border-emerald-500/30 p-4 rounded-2xl">
+                        <h4 class="text-xs font-bold text-emerald-400 uppercase mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-bullhorn"></i> অফিশিয়াল নির্দেশিকা ও এডমিন নোটিশ
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                            ${matched.notice || 'আপনার ফাইলটি বর্তমানে প্রসেসিং করা হচ্ছে। নির্দেশিকা অনুসরণ করুন।'}
+                        </p>
+                    </div>
+                </div>
+            `;
+            
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>
